@@ -14,6 +14,12 @@ use Illuminate\Validation\ValidationException;
 class BaseValidate
 {
 
+    protected static $rules = [];
+
+    protected static $message = [];
+
+    protected static $custom = [];
+
     /**
      * 验证来自request的数据
      * @param mixed ...$classList 其他验证类
@@ -87,7 +93,7 @@ class BaseValidate
      */
     protected static function rules()
     {
-        return [];
+        return static::$rules;
     }
 
     /**
@@ -97,7 +103,7 @@ class BaseValidate
      */
     protected static function messages()
     {
-        return [];
+        return static::$message;
     }
 
     /**
@@ -106,6 +112,6 @@ class BaseValidate
      */
     protected static function custom()
     {
-        return [];
+        return  static::$custom;
     }
 }

@@ -85,7 +85,6 @@ class Logger
     private static function getTos()
     {
         $develops = config('mail.develops');
-        $develops = explode(';', $develops);
         $tos = [];
         if (count($develops) > 0) {
             foreach ($develops as $develop) {
@@ -113,7 +112,7 @@ class Logger
             ->setEncryption($encryption);
         $mailer = new Swift_Mailer($transport);
         //初始化发送消息
-        $message = (new Swift_Message('【山岚】' . $channel . '异常邮件'))
+        $message = (new Swift_Message('【异常】' . $channel . '异常邮件'))
             ->setFrom([$from['address'] => $from['name']])
             ->setTo($tos);
 
