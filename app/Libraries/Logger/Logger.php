@@ -69,7 +69,7 @@ class Logger
             $logger->pushHandler($mailHandler);
         }
 
-        $path = __DIR__ . '/../storage/logs/' . date('Y-m') . '/' . $channel . '/';
+        $path = base_path() . '/storage/logs/' . date('Y-m') . '/' . $channel . '/';
         $this->mkDirs($path);
 
         $fileName = $channel . '-' . date('m-d') . '.log';

@@ -10,7 +10,6 @@ use Laravel\Lumen\Routing\Router;
 $params = [
     'prefix' => 'admin',
     'namespace' => 'Admin\Controllers',
-    'middleware' => ['AuthFilter:admin', 'AdminAuth']
 ];
 $router->group($params, function (Router $api) {
 
