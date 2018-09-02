@@ -94,7 +94,7 @@ class Handler extends ExceptionHandler
                 unset($messages['post']);
             }
             try {
-                $logger = (new Logger())->init(Logger::CHANNEL_EXCEPTION);
+                $logger = Logger::init(Logger::CHANNEL_EXCEPTION);
                 $logger->error('Handler抛出错误', $messages);
             } catch (\Exception $e) {
 

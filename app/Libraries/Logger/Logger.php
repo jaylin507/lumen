@@ -58,19 +58,22 @@ class Logger
      * @return MonologLogger
      * @throws \Exception
      */
-    public function init($channel)
+    public static function init($channel = self::CHANNEL_COMMON)
     {
         //初始化Logger
         $logger = new MonologLogger($channel);
 
         $tos = self::getTos();
         if (count($tos) > 0) {
-            $mailHandler = $this->initMail($tos, $channel);
+            $mailHandler = self::initMail($tos, $channel);
             $logger->pushHandler($mailHandler);
         }
 
-        $path = base_path() . '/storage/logs/' . date('Y-m') . '/' . $channel . '/';
-        $this->mkDirs($path);
+        $path = base_path() . '/storage/logs/' . date('Y-m') . '/';
+        if (php_sapi_name() == 'cli') {
+            $path = base_path() . '/storage/logs_cli/' . date('Y-m') . '/';
+        }
+        self::mkDirs($path);
 
         $fileName = $channel . '-' . date('m-d') . '.log';
         $streamHandler = new StreamHandler($path . $fileName);
@@ -96,7 +99,7 @@ class Logger
         return $tos;
     }
 
-    private function initMail($tos, $channel)
+    private static function initMail($tos, $channel)
     {
         $host = config('mail.host');
         $port = config('mail.port');
@@ -126,10 +129,10 @@ class Logger
         return $mailHandler;
     }
 
-    private function mkDirs($dir, $mode = 0777)
+    private static function mkDirs($dir, $mode = 0777)
     {
         if (!is_dir($dir)) {
-            if (!$this->mkDirs(dirname($dir))) {
+            if (!self::mkDirs(dirname($dir))) {
                 return false;
             }
             if (!mkdir($dir, $mode)) {
