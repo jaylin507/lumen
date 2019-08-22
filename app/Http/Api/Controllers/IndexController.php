@@ -11,7 +11,6 @@ namespace Api\Controllers;
 
 use Common\Controllers\BaseController;
 use Common\Validator\IdValidate;
-use Illuminate\Support\Facades\Log;
 
 class IndexController extends BaseController
 {
@@ -21,8 +20,8 @@ class IndexController extends BaseController
      */
     public function index()
     {
-        IdValidate::check();
+        $id = IdValidate::check();
 
-        return $this->success();
+        return $this->success($id);
     }
 }

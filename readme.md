@@ -1,5 +1,9 @@
 # Extend Lumen PHP Framework
 
+## 版本
+    lumen 5.8.*
+    php >= 7.1.3
+    
 ## 目录改动
 
 - app/Http下设置为多客户端（除Common外）
@@ -23,8 +27,9 @@
 
 ## 引用的compose扩展包
 
-- swiftmailer/swiftmailer：邮件服务
-- guzzlehttp/guzzle：HTTP客户端，构造请求
+- `swiftmailer/swiftmailer` 邮件服务
+- `guzzlehttp/guzzle` HTTP客户端，构造请求
+- `firebase/php-jwt` Token
 
 ## 使用姿势
 ### 日志
