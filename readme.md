@@ -23,9 +23,14 @@
 
 ## 引用的compose扩展包
 
-- monolog/monolog 日志
-- swiftmailer/swiftmailer 邮件服务
+- swiftmailer/swiftmailer：邮件服务
 - guzzlehttp/guzzle：HTTP客户端，构造请求
+
+## 使用姿势
+### 日志
+- 封装了日志自动发邮件功能，配置在`logging.php`文件，可配置指定级别以上的错误自动发送邮件给一人或多人
+- 参考`App\Libraries\Logger\SwiftMailerHandler`可实现报错发送到微信公众号、钉钉等其他平台
+- 使用方法：  `Log::error('报错内容')`
 
 
 ## 开发规范

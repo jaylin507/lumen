@@ -11,6 +11,7 @@ namespace Api\Controllers;
 
 use Common\Controllers\BaseController;
 use Common\Validator\IdValidate;
+use Illuminate\Support\Facades\Log;
 
 class IndexController extends BaseController
 {
