@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use App\Libraries\Logger\Logger;
 use Exception;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -94,8 +95,7 @@ class Handler extends ExceptionHandler
                 unset($messages['post']);
             }
             try {
-                $logger = Logger::init(Logger::CHANNEL_EXCEPTION);
-                $logger->error('Handler抛出错误', $messages);
+                Log::error('Handler抛出错误', $messages);
             } catch (\Exception $e) {
 
             }
