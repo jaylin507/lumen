@@ -1,8 +1,8 @@
 # Extend Lumen PHP Framework
 
 ## 版本
-    lumen 5.8.*
-    php >= 7.1.3
+    lumen 6.0
+    php >= 7.2
     
 ## 目录改动
 
